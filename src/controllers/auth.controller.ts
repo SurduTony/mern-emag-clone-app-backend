@@ -5,10 +5,10 @@ import generateTokenAndSetCookie from "../lib/utils/generateToken";
 import User from "../models/user.model";
 
 const register = async (req: Request, res: Response) => {
-  const { email, password } = req.body;
+  const { name, phoneNumber, email, password } = req.body;
 
   try {
-    if (!email || !password) {
+    if (!name || !phoneNumber || !email || !password) {
       res.status(400).json({ message: "Both fields needed" });
       return;
     }

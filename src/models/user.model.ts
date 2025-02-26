@@ -3,13 +3,21 @@ import bcrypt from "bcryptjs";
 
 export type UserType = {
   _id: string;
+  name: string;
+  phoneNumber: string;
   email: string;
   password: string;
+  imageUrl?: string;
+  favorites: string[];
 };
 
 const userSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  phoneNumber: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
+  imageUrl: { type: String },
+  favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
 });
 
 // Hash the password before saving the user
